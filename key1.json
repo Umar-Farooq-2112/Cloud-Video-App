@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "cloud-video-storage-445512",
+  "private_key_id": "11ae912c2b254f34c4ce31dadd571436bdaacaaa",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC+70rVKXcy8mKY\n2Wkx2ZEMglqnLrJqbw03JXZr1y99Hc1MbnMeRziOb1MhGBfI8f5ZzWTaneARRgDa\nVLoyhK+T6NUCmfWGXYvyvqSclPLaFKoz+Xk0yhyCsjiahOXoobR95eAIM5S7NlRt\nl69DLWO/Jpy8QBGVJBLkfmHSpTIJ4ypgeaDevnysieXNLvC9+C0sfoelvKNa8D9O\nXhyM9LILlAD56IeygADqWvhV9OMdAZs+4bT9pKekAmu2bZng2wqm4Koe2QROkT5s\nhwqEFCWR53TM5Pgp/TSG3FT4Aw+5rCS+BqGoQvdOd0EbIOl9flMUf4yKJ5cta5I4\noyL7CBHxAgMBAAECggEACDSfei64hTN+gkQhrbdEcQ2vGK08lK9mGX8eKj9Ktq1P\ns9+xSdVUvGZTY8I1z3h67mAR3AVZ6lQgWEG46M/j/c7NTLnSH+6oQ4vm5iXOlAm8\nUNSBXX/sHr/LB/T7Lna4m4qECMYyt6L7mOQib5glR8NAjCSSvN6ag0BdMuDPmDYc\ni74WY6kZJzxs09y66ZiqwiKxjsiU4E/uDfptiyEaI75Mv0N/30/aTz0RLlcO/jrY\n+ZEKzF7vfgKo6do+Ccu5rBYNlW9Fw2RXFEOCDgw3rYzeYGNjYEIsvP34Olna8JPD\nf66QZOZNuD3SFFoRg0qXaIwIzAIN9fJJjqLYtUVPeQKBgQDh2WcT4S0hdeVZ1j6R\nqPKh1C+0vUmiBfrDXMiy4JQUi431aTd5dNSi5X28yuBru3dmj3agSTg9Z21xDSEl\nVahvDbEYaoFOcX6uG1FgKo+k4DVF/pTspyFs5HSPKTyB0S8OOVdnE3E9moZa0rW3\nzD1rnMREtfAATbnPtlFkec/l3QKBgQDYbKfr3DYSPdDxMXgBEbJj9fdSYzAAqOqL\nLTYExueoYDdyRLpnvf1jGcfhS4YkpGf3S3rc8ynwcewbYbTPbufxMPTh34ejcVrf\nKEzEy2G3NJ+C0CbkUq4+JMW8aqZCypD8ksRmZSC++Hh7jxMV7/XO9Z+eLGWVgqSU\neo6FL6QtJQKBgQC4cMQmTwF9TvvDlxy39eJYWKGxF9iXUgzNGOvqcU9dS+7d2VRt\ngwTYF1TNJl2Kfalv/39gPQuJ0fplldRY2hBYyTS0fN4mwrcy1qppP7jZbCT1iYfz\nkDXS6OtrssBwP/YOxrNjQVR8e8J3T5cJh+ktBfSfLHnYtaEmSX1E8dnfnQKBgQCN\nM2bjZUsJ37bghgvrdqZSvXldEUWSSKKtpxOlTjh6DDxgmyKa6MPW0k0sWl/srC8A\nkwhX+3YTX+BRhQ+4fn1pSS2b6IDQS/ajveFITAE2zGh9qlyVfrQb61XvNg2/afXq\nM79bpwMUVXwV8STcnTBclLhNNF4ai5/hF4zArHKK2QKBgQCaGyRV/p0S/c413upO\nQX9KMLpNjKGkrK8myzvjJPTKuGaqqzExOj3fM1gT4JXarC6+z66GURGfKki4WJU3\nuvHvvXr2xPPyG2Qk0cm8h0pfFz+6NOmHDs/aaAvmug/SeiXccQAr2bp0Kv8E7BIY\nnu109czkEpNKn1AkoYvU5hmM1Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "cloudstorageapp@cloud-video-storage-445512.iam.gserviceaccount.com",
+  "client_id": "114914330456698226858",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cloudstorageapp%40cloud-video-storage-445512.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
