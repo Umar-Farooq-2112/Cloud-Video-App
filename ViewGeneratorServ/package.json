@@ -1,0 +1,13 @@
+{
+  "name": "viewgeneratorserv",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "4",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Umar Farooq",
+  "license": "ISC",
+  "description": ""
+}
