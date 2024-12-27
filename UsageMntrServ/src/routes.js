@@ -9,9 +9,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/logit',(req,res)=>{
-    const {info} = req.body;
-    const q = "INSERT INTO logs (info,dtime) VALUES (?,CURRENT_TIMESTAMP);";
-    mysqlConnection.query(q,[info],(error)=>{
+    const {user_id, video , info} = req.body;
+    const q = "INSERT INTO logs (user_id,info,video,dtime) VALUES (?,?,?,CURRENT_TIMESTAMP);";
+    mysqlConnection.query(q,[user_id,info,video],(error)=>{
         if (error){
             console.log(error);
             res.status(500).json({status:"Failed", error:error.message});

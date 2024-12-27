@@ -33,6 +33,25 @@ router.post('/signup', (req, res) => {
     });
 });
 
+router.get('/fetch-user/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    const q = "SELECT id,username,name,email,contact FROM users WHERE id = ?;";
+
+    mysqlConnection.query(q, [user_id], (error, rows, field) => {
+        if (error) {
+            console.error(error);
+            res.status(500).json({ status: 'Failed', error: error.message });
+        } else {
+            if (rows.length > 0) {
+                const user_data = rows[0];
+                res.status(200).json({ status: "OK", info: user_data });
+            } else {
+                res.status(401).json({ status: "Invalid" });
+            }
+        }
+    });
+});
+
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
     const q = "SELECT id,username,name,email,contact FROM users WHERE username = ? AND password = ?;";
@@ -53,20 +72,20 @@ router.post('/login', (req, res) => {
     });
 });
 
-router.get("/id/:username",(req,res)=>{
+router.get("/id/:username", (req, res) => {
     const q = "SELECT id FROM users where username = ?;";
-    mysqlConnection.query(q,[req.params.username],(error,rows,field)=>{
-        if (error){
+    mysqlConnection.query(q, [req.params.username], (error, rows, field) => {
+        if (error) {
             console.log(error);
-            res.status(500).json({status:"Failed", error: error.message});
+            res.status(500).json({ status: "Failed", error: error.message });
         }
-        else{
-            if (rows.length>0){
+        else {
+            if (rows.length > 0) {
                 const r = rows[0].id;
-                res.status(200).json({status:"OK", id: r});
+                res.status(200).json({ status: "OK", id: r });
             }
-            else{
-                res.status(401).json({status:"Invalid"});
+            else {
+                res.status(401).json({ status: "Invalid" });
             }
         }
     });

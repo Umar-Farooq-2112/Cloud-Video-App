@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Signup</h2>
+        <form id="signupForm">
+            <input type="text" id="signupUsername" placeholder="Username" required />
+            <input type="text" id="signupName" placeholder="Name" required />
+            <input type="email" id="signupEmail" placeholder="Email" required />
+            <input type="password" id="signupPassword" placeholder="Password" required />
+            <input type="text" id="signupContact" placeholder="Contact" required />
+            <button type="submit">Signup</button>
+        </form>
+    </div>
+
+    <script>
+        const API_URL = "http://localhost:4501";
+        const API_URL_2 = "http://localhost:4502";
+        document.getElementById("signupForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const username = document.getElementById("signupUsername").value;
+            const name = document.getElementById("signupName").value;
+            const email = document.getElementById("signupEmail").value;
+            const password = document.getElementById("signupPassword").value;
+            const contact = document.getElementById("signupContact").value;
+
+            const response = await fetch(`${API_URL}/signup`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username, name, email, password, contact })
+            });
+
+            const data = await response.json();
+            if (data.status === "OK") {
+                const u_id = data.info.id;
+                console.log(u_id);
+                const response2 = await fetch(`${API_URL_2}/userinfo/${u_id}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                });
+
+                const data2 = response2.json();
+                    alert("Signup successful!");
+                    window.location.href = "login.html";
+
+            } else {
+                alert(`Signup failed: ${data.error}`);
+            }
+        });
+    </script>
+</body>
+
+</html>
