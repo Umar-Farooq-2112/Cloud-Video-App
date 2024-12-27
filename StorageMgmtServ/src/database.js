@@ -1,10 +1,16 @@
+require('dotenv').config();
 const mysql = require('mysql2');
 
+// process.env.DB_HOST
+// process.env.DB_USER
+// process.env.DB_PASSWORD
+// process.env.DB_DATABASE
+
 const mysqlConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'StorageMgmtServDB'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 });
 
 mysqlConnection.connect(function (error) {

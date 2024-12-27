@@ -13,7 +13,7 @@ const port = 4502;
 
 app.use(cors());
 
-const USAGE_MNTR_SERV_URL = "http://localhost:4503";
+const USAGE_MNTR_SERV_URL = process.env.USAGE_MNTR_URL;
 
 
 const storage = new Storage({
@@ -107,7 +107,7 @@ async function handleFileUpload(req, res) {
                                 });
                             });
 
-                            const logData = { user_id: user_id, video: vname ,info: `Uplaoded` };
+                            const logData = { user_id: user_id, video: vname ,info: `Uploaded` };
                             axios.post(`${USAGE_MNTR_SERV_URL}/logit`, logData)
                                 .then(response => {
                                     console.log("Log entry added:", response.data);

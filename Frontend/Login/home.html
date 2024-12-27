@@ -364,6 +364,9 @@ progress::-webkit-progress-value {
                 alert("Please select a video file to upload.");
             document.getElementById("message").innerText = "";
             return;
+        }else if (videoFile.type != "video/mp4"){
+            document.getElementById("message").innerText = "The selected file must be in Mp4 format";
+            return
         }
         
             // Calculate file size in MB

@@ -4,7 +4,6 @@ USE UsageMntrServDB;
 
 
 CREATE TABLE Logs(
-ID INT AUTO_INCREMENT PRIMARY KEY,
 user_id INT,
 video VARCHAR (255),
 info VARCHAR(100),
