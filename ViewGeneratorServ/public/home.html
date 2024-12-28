@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #4CAF50;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li button {
+            background-color: #fff;
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li button:hover {
+            background-color: #45a049;
+            color: #fff;
+        }
+
+        /* Storage Section */
+        .storage {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .storage p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        progress {
+            width: 100%;
+            height: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+            appearance: none;
+        }
+
+        /* progress::-webkit-progress-bar {
+    background-color: #e0e0e0;
+}
+
+progress::-webkit-progress-value {
+    background-color: #4CAF50;
+} */
+
+        progress::-webkit-progress-value {
+            background-color: var(--progress-bar-color, #4CAF50);
+            /* Default to green */
+        }
+
+
+
+
+        /* Video List */
+        .video-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .video-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            width: 220px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-card video {
+            max-width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .video-card p {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .video-card button {
+            margin-top: 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .video-card button:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Upload Form */
+        form {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><button id="logout-btn">Logout</button></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="storage">
+            <p>Storage Used: <span id="storage-used"></p>
+            <progress id="storage-progress" value="0" max="50"></progress>
+        </div>
+
+        <h2>Uploaded Videos</h2>
+        <div id="video-list" class="video-list"></div>
+
+
+        <h1>Upload a Video</h1>
+        <form id="uploadForm">
+            <label for="vname">Video Name:</label>
+            <input type="text" id="vname" name="vname" required><br><br>
+
+            <label for="videoFile">Choose a video:</label>
+            <input type="file" id="videoFile" name="video" accept="video/*" required><br><br>
+
+            <button type="submit">Upload Video</button>
+        </form>
+        <div id="message"></div>
+    </div>
+    <script>
+        const BASE_URL = "http://localhost:4502";
+
+        // const userId = 1; // Example user ID
+        // Retrieve the user ID from the URL query parameters
+
+        const params = new URLSearchParams(window.location.search);
+        const userId = params.get("id");
+        // const userId = 1;
+
+        // Use the user ID in your application
+        if (userId) {
+            console.log(`User ID: ${userId}`);
+            const messageElement = document.getElementById("message");
+            if (messageElement) {
+                // messageElement.innerText = `Welcome, User ID: ${userId}`;
+            }
+        } else {
+            console.log("No user ID provided.");
+        }
+
+        // Fetch user info and videos on load
+        document.addEventListener("DOMContentLoaded", async () => {
+            await loadUserInfo();
+            await loadVideos();
+        });
+
+        // Load user info
+
+        // Load user info
+        async function loadUserInfo() {
+            try {
+                // Fetch user info from the backend
+                const response = await fetch(`${BASE_URL}/userinfo/${userId}`,);
+                const data = await response.json();
+                if (data.status === "Failed") {
+                    throw new Error(data.error);
+                    storageUsed = 0;
+                }
+                else {
+                    var storageUsed = data.storage_used
+                }
+                const storageLimit = 50; // Assuming 50 MB is the storage limit
+
+                const storagePercentage = (storageUsed / storageLimit) * 100;
+
+                // Update storage used text and progress bar value
+                const storageUsedElement = document.getElementById("storage-used");
+                const storageProgressElement = document.getElementById("storage-progress");
+
+                storageUsedElement.textContent = `${parseFloat(storageUsed).toFixed(2)} MB of ${storageLimit} MB used`;
+                storageProgressElement.value = storageUsed;
+
+                // Alert users if storage is critical
+                // Update progress bar color and alert users if necessary
+                if (storagePercentage >= 80) {
+                    storageProgressElement.style.setProperty("--progress-bar-color", "red");
+                    if (storagePercentage === 100) {
+                        alert("Storage is 100% utilized. Please delete some videos to upload new ones.");
+                    } else {
+                        alert("Warning: 80% of storage is utilized.");
+                    }
+                } else {
+                    storageProgressElement.style.setProperty("--progress-bar-color", "#4CAF50");
+                }
+
+
+                // Save the updated storage used to the database
+                // await updateStorage(userId, storageUsed);
+            } catch (error) {
+                console.error("Failed to load user info:", error);
+            }
+        }
+
+        // Load uploaded videos with URLs
+        async function loadVideos() {
+            try {
+                const response = await fetch(`${BASE_URL}/fetch-videos/${userId}`);
+                const data = await response.json();
+                const videoList = document.getElementById("video-list");
+                videoList.innerHTML = "";
+                if (data.error){
+                    return;
+                }
+
+                data.videos.forEach((video) => {
+                    const videoCard = document.createElement("div");
+                    videoCard.className = "video-card";
+
+                    if (video.error) {
+                        videoCard.innerHTML = `<p>${video.name} - ${video.error}</p>`;
+                    } else {
+                        videoCard.innerHTML = `
+                    <video controls>
+                        <source src="${video.url}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>${video.name}</p>
+                `;
+                        const deleteBtn = document.createElement("button");
+                        deleteBtn.textContent = "Delete";
+                        deleteBtn.addEventListener("click", () => deleteVideo(video.name));
+                        videoCard.appendChild(deleteBtn);
+                    }
+
+                    videoList.appendChild(videoCard);
+                });
+
+                // Recalculate and update storage bar after loading videos
+                await loadUserInfo();
+            } catch (error) {
+                console.error("Failed to load videos:", error);
+            }
+        }
+
+        // Upload video
+
+        // Upload video
+        document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent form submission refresh
+
+            document.getElementById("message").innerText = "Uploading...........";
+
+            const videoName = document.getElementById("vname").value;
+            const videoFile = document.getElementById("videoFile").files[0];
+
+            if (!videoFile) {
+                alert("Please select a video file to upload.");
+            document.getElementById("message").innerText = "";
+            return;
+        }else if (videoFile.type != "video/mp4"){
+            document.getElementById("message").innerText = "The selected file must be in Mp4 format";
+            return
+        }
+        
+            // Calculate file size in MB
+            const fileSizeInMB = (videoFile.size / (1024 * 1024)).toFixed(2);
+
+            try {
+                // Fetch current storage used from the database
+                const userInfoResponse = await fetch(`${BASE_URL}/userinfo/${userId}`);
+                const userInfo = await userInfoResponse.json();
+
+                if (userInfo.status === "Failed") {
+                    throw new Error(userInfo.error);
+                }
+
+                const currentStorage = parseFloat(userInfo.storage_used || 0);
+                const maxStorage = 50; // Storage limit in MB
+
+                // Check if storage will exceed limit
+                if (currentStorage + parseFloat(fileSizeInMB) > maxStorage) {
+                    alert(
+                        "Not enough storage to upload this video. Please delete some videos."
+                    );
+                    return;
+                }
+
+                // Prepare form data for upload
+                const formData = new FormData();
+                formData.append("video", videoFile); // Add the video file
+                formData.append("user_id", userId); // Add the user ID
+                formData.append("vname", videoName); // Add the video name
+                formData.append("bandwidth", parseFloat(fileSizeInMB)); // Add updated storage
+
+                // Send POST request to upload video
+                const response = await fetch(`${BASE_URL}/video`, {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    document.getElementById("message").innerText =
+                        "Upload successful! Video URL: " + result.videoUrl;
+
+                    // Reload user info and videos
+                    await loadUserInfo();
+                    await loadVideos();
+
+
+                } else {
+                    document.getElementById("message").innerText =
+                        "Error: " + (result.error || "Upload failed.");
+                }
+            } catch (error) {
+                console.error("Error during upload:", error);
+                document.getElementById("message").innerText =
+                    "Upload failed. Please try again.";
+            }
+        });
+
+
+
+        // async function updateStorage(userId, storageUsed) {
+        //   try {
+        //     const response = await fetch('http://localhost:3000/update-storage', {
+        //       method: 'POST',
+        //       headers: {
+        //         'Content-Type': 'application/json',
+        //       },
+        //       body: JSON.stringify({ userId, storageUsed }),
+        //     });
+
+        //     const result = await response.json();
+        //     if (result.success) {
+        //       console.log('Storage updated successfully.');
+        //     } else {
+        //       console.error('Error:', result.error);
+        //     }
+        //   } catch (error) {
+        //     console.error('Error:', error);
+        //   }
+        // }
+
+        // Delete video
+        async function deleteVideo(videoName) {
+            console.log(videoName);
+            try {
+                const currentStorage = parseInt(
+                    document.getElementById("storage-used").textContent,
+                    10
+                );
+                const response1 = await fetch(`${BASE_URL}/videosize`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        vname: `${userId}/${videoName}`, // Make sure videoName is set correctly
+                    }),
+                });
+
+                const data1 = await response1.json();
+
+                if (data1.status == "OK") {
+                    console.log("MBS FETCHED SUCCESSFULLY");
+                } else {
+                    console.log("Eroro fetching size");
+                    return;
+                }
+                // Corrected variable name: Use 'vsize' instead of 'strg'
+                const vsize = data1.vsize;
+
+                console.log("Vsize: " + vsize); // Log the correct variable
+
+                // storageUsed = storageUsed - vsize; // Example size reduction for the video
+                // console.log("storageUsed: " + storageUsed); // Log the correct variable
+
+                const response = await fetch(`${BASE_URL}/video`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        user_id: userId,
+                        vname: videoName,
+                        storage: parseFloat(vsize).toFixed(1),
+                    }),
+                });
+                const data = await response.json();
+
+                if (data.status === "Failed") throw new Error(data.error);
+
+                await loadUserInfo();
+                await loadVideos();
+            } catch (error) {
+                console.error("Failed to delete video:", error);
+            }
+        }
+
+        // Logout button functionality
+        document.getElementById("logout-btn").addEventListener("click", () => {
+            window.location.href = "http://localhost:3000/"; // Update the path based on your folder structure
+        });
+
+    </script>
+</body>
+
+</html>
