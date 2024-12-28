@@ -2,8 +2,7 @@ DROP DATABASE IF EXISTS UsageMntrServDB;
 CREATE DATABASE UsageMntrServDB;
 USE UsageMntrServDB;
 
-
-CREATE TABLE Logs(
+CREATE TABLE logs(
 user_id INT,
 video VARCHAR (255),
 info VARCHAR(100),
