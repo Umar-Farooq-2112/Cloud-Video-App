@@ -7,7 +7,7 @@ app.use(cors());
 const bodyParser = require('body-parser');
 app.use(bodyParser.json({ limit: '10mb' }));
 
-app.set('port', process.env.PORT || 4503);
+app.set('port', process.env.PORT || 3000);
 
 app.use(express.json());
 

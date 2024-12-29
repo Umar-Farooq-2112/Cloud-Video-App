@@ -9,7 +9,7 @@ const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
-const port = 4502;
+const port = 3000;
 
 app.use(cors());
 
@@ -229,6 +229,7 @@ app.delete('/video', (req, res) => {
 
                                 // Call the /logit API
                                 const logData = { user_id: user_id, video: vname ,info: `Deleted` };
+                                
                                 axios.post(`${USAGE_MNTR_SERV_URL}/logit`, logData)
                                     .then(response => {
                                         console.log("Log entry added:", response.data);

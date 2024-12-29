@@ -235,7 +235,8 @@ progress::-webkit-progress-value {
         <div id="message"></div>
     </div>
     <script>
-        const BASE_URL = "http://localhost:4502";
+        const BASE_URL = "http://34.47.144.122:3000";
+        // const BASE_URL = "http://localhost:4000";
 
         // const userId = 1; // Example user ID
         // Retrieve the user ID from the URL query parameters
@@ -505,10 +506,12 @@ progress::-webkit-progress-value {
                 console.error("Failed to delete video:", error);
             }
         }
-
+        function navigateTo(page) {
+            window.location.href = `/${page}`;
+        }
         // Logout button functionality
         document.getElementById("logout-btn").addEventListener("click", () => {
-            window.location.href = "http://localhost:3000/"; // Update the path based on your folder structure
+            navigateTo("");
         });
 
     </script>

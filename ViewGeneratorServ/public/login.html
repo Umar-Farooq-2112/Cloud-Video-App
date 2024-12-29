@@ -178,9 +178,10 @@
             <button type="submit">Login</button>
         </form>
     </div>
+    
 
     <script>
-        const API_URL = "http://localhost:4501";
+        const API_URL = "http://35.200.202.216:3000";
         function navigateToWithId(page, id) {
             window.location.href = `/${page}?id=${id}`;
         }
@@ -204,7 +205,7 @@
                 // window.location.href = `dashboard.html?id=${id}`;
                 localStorage.setItem('id', id);
                 // window.location.href = `../dashboard.html`; 
-                navigateToWithId("home",id);
+                navigateToWithId("home", id);
                 // window.location.href = `home.html/?id=${id}`;
             } else {
                 alert("Invalid username or password");
